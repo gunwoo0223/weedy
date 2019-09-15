@@ -5,21 +5,11 @@
             id="create"
             flat
         >
-            <v-toolbar
-            dense
-            floating
+            <v-autocomplete
+                :items="components"
             >
-            <v-text-field
-                hide-details
-                single-line
-            ></v-text-field>
+            </v-autocomplete>
 
-            <v-btn icon>
-                <v-icon>search</v-icon>
-            </v-btn>
-
-            </v-toolbar>
-        
             <!-- 바로가기 아이콘들이 들어가는 곳 -->
             <v-card-text style="height:75vh" class="grey lighten-5">
 
@@ -105,6 +95,7 @@ export default {
           router: '/qna',
         },        
       ],
+      components:['Autocompletes', 'Comboboxes', 'Forms', 'Inputs', 'Overflow Buttons', 'Selects', 'Selection Controls', 'Sliders', 'Textareas', 'Text Fields',],
       model: 1,
     }),
 }
