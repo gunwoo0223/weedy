@@ -20,7 +20,7 @@
 
             </v-toolbar>
         </v-card>
-        <!-- 아이콘들이 들어가는 곳 -->
+        <!-- 바로가기 아이콘들이 들어가는 곳 -->
         <v-card-text style="height:60vh" class="grey lighten-5">
 
         
