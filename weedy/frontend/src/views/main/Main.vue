@@ -1,12 +1,18 @@
 <template>
     <div class="main">
+        <button @click="test">테스트!!!!!123</button>
         <!-- 상단 검색 부분 -->
         <v-card 
             id="create"
             flat
         >
+            <!-- 
+            <v-list-item
+            v-for="(item, i) in items"
+            :key="i"
+            > -->
+
             <v-autocomplete
-                :items="components"
             >
             </v-autocomplete>
 
@@ -18,16 +24,13 @@
 
             <!-- 우측 하단 플로팅 버튼 생기는 곳 -->
             <v-speed-dial
-                v-model="fab"
                 bottom
                 right
                 transition="slide-y-reverse-transition"
             >
                 <template v-slot:activator>
                 <v-btn
-                    v-model="fab"
                     dark
-                    fab
                     color="pink"
                 >
                 <v-icon>reorder</v-icon>
@@ -71,7 +74,13 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
+    // async created(){
+    //   const {data} = await axios.get('/main');
+    //   console.log(data);
+    // },
     data: () => ({
       items: [
         {
@@ -95,9 +104,23 @@ export default {
           router: '/qna',
         },        
       ],
-      components:['Autocompletes', 'Comboboxes', 'Forms', 'Inputs', 'Overflow Buttons', 'Selects', 'Selection Controls', 'Sliders', 'Textareas', 'Text Fields',],
+      //components:['Autocompletes', 'Comboboxes', 'Forms', 'Inputs', 'Overflow Buttons', 'Selects', 'Selection Controls', 'Sliders', 'Textareas', 'Text Fields',],
+      components: [],
       model: 1,
     }),
+    methods: {
+        test : function(){
+            axios.get('/main')
+            .then((response) => {
+              alert("OK : "+response.data);
+              console.log(response);
+              this.components = response.data;
+            }).catch((ex)=> {
+              alert("ERROR!!!! : "+ex);
+              console.warn("ERROR!!!! : ", ex);
+            })
+        },
+    },
 }
 </script>
 
