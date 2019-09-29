@@ -117,7 +117,8 @@ export default {
     methods: {
         getSelectedAppName : function(appName){
             alert(appName);
-            //router.push({path:'/searchList'});
+            //this.$router.push('/searchList');
+            this.$router.push({path: '/searchList', param: {name: appName}});
         },
     },
 }
