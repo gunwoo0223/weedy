@@ -13,7 +13,8 @@
             > -->
 
             <v-autocomplete
-            >
+              :items="components">
+
             </v-autocomplete>
 
             <!-- 바로가기 아이콘들이 들어가는 곳 -->
@@ -113,8 +114,10 @@ export default {
             axios.get('/main')
             .then((response) => {
               alert("OK : "+response.data);
-              console.log(response);
-              this.components = response.data;
+              //this.components = response.data;
+              for(var i = 0;i < response.data.length;i++){
+                this.components.push(response.data[i].name);
+              }
             }).catch((ex)=> {
               alert("ERROR!!!! : "+ex);
               console.warn("ERROR!!!! : ", ex);
