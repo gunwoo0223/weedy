@@ -2,21 +2,12 @@ package com.toy.weedy;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.servlet.ServletComponentScan;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-@ServletComponentScan //@WebFilter를 사용하기 위한설정
-public class WeedyApplication extends SpringBootServletInitializer{
+public class WeedyApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(WeedyApplication.class, args);
 	}
-	
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-		// TODO Auto-generated method stub
-		return super.configure(builder);
-	}
+
 }
