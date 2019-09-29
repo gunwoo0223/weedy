@@ -37,6 +37,16 @@ export default new Router({
       component: () => import('./views/register/RegisterUser.vue')
     },
     {
+      path: '/searchList',
+      name: 'searchList',
+      component: () => import('./views/search/SearchList.vue')
+    },
+    {
+      path: '/searchDetail',
+      name: 'searchDetail',
+      component: () => import('./views/search/SearchDetail.vue')
+    },
+    {
       path: '/qna_list',
       name: 'qna_list',
       component: () => import('./views/qna/QnaList')
