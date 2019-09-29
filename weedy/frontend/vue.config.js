@@ -17,7 +17,7 @@ module.exports = {
             '/main': {
                 target: 'http://localhost:8080/main',
                 changeOrigin: true,
-            },
+            }
         }
     }
 

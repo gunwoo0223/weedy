@@ -15,20 +15,3 @@ new Vue({
 
 
 
-var mysql = require('mysql');
-// Connection 객체 생성 
-var connection = mysql.createConnection({
-  host: '54.180.145.129',
-  port: 3306,
-  user: 'admin',   
-  password: '',
-  database: 'weedy'  
-});  
-// Connect
-connection.connect(function (err) {   
-  if (err) {     
-    console.error('mysql connection error');     
-    console.error(err);     
-    throw err;   
-  } 
-});
