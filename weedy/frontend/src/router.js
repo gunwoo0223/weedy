@@ -27,9 +27,14 @@ export default new Router({
       component: () => import('./views/main/Main.vue')
     },
     {
-      path: '/register',
-      name: 'register',
-      component: () => import('./views/register/Register.vue')
+      path: '/register_admin',
+      name: 'register_admin',
+      component: () => import('./views/register/Register_admin.vue')
+    },
+    {
+      path: '/register_user',
+      name: 'register_user',
+      component: () => import('./views/register/Register_user.vue')
     }
   ]
 })
