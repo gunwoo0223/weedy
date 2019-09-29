@@ -1,16 +1,10 @@
 <template>
     <div class="main">
-        <button @click="test">테스트!!!!!123</button>
         <!-- 상단 검색 부분 -->
         <v-card 
             id="create"
             flat
         >
-            <!-- 
-            <v-list-item
-            v-for="(item, i) in items"
-            :key="i"
-            > -->
 
             <v-autocomplete
               :items="components">
@@ -78,10 +72,20 @@
 import axios from 'axios';
 
 export default {
-    // async created(){
-    //   const {data} = await axios.get('/main');
-    //   console.log(data);
-    // },
+    //페이지가 호출될때 바로 실행되는 함수. created -> mounted -> updated -> destroyed
+    created(){
+      axios.get('/main')
+            .then((response) => {
+              alert("OK : "+response.data);
+              //this.components = response.data;
+              for(var i = 0;i < response.data.length;i++){
+                this.components.push(response.data[i].name);
+              }
+            }).catch((ex)=> {
+              alert("ERROR!!!! : "+ex);
+              console.warn("ERROR!!!! : ", ex);
+            })
+    },
     data: () => ({
       items: [
         {
@@ -111,17 +115,7 @@ export default {
     }),
     methods: {
         test : function(){
-            axios.get('/main')
-            .then((response) => {
-              alert("OK : "+response.data);
-              //this.components = response.data;
-              for(var i = 0;i < response.data.length;i++){
-                this.components.push(response.data[i].name);
-              }
-            }).catch((ex)=> {
-              alert("ERROR!!!! : "+ex);
-              console.warn("ERROR!!!! : ", ex);
-            })
+            
         },
     },
 }
