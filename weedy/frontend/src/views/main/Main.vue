@@ -7,7 +7,8 @@
         >
 
             <v-autocomplete
-              :items="components">
+              :items="components"
+              @change="getSelectedAppName">
 
             </v-autocomplete>
 
@@ -114,8 +115,9 @@ export default {
       model: 1,
     }),
     methods: {
-        test : function(){
-            
+        getSelectedAppName : function(appName){
+            alert(appName);
+            //router.push({path:'/searchList'});
         },
     },
 }

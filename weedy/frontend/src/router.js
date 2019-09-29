@@ -35,6 +35,16 @@ export default new Router({
       path: '/register_user',
       name: 'register_user',
       component: () => import('./views/register/Register_user.vue')
-    }
+    },
+    {
+      path: '/searchList',
+      name: 'searchList',
+      component: () => import('./views/search/SearchList.vue')
+    },
+    {
+      path: '/searchDetail',
+      name: 'searchDetail',
+      component: () => import('./views/search/SearchDetail.vue')
+    },
   ]
 })
