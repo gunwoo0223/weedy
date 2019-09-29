@@ -29,12 +29,32 @@ export default new Router({
     {
       path: '/register_admin',
       name: 'register_admin',
-      component: () => import('./views/register/Register_admin.vue')
+      component: () => import('./views/register/RegisterAdmin.vue')
     },
     {
       path: '/register_user',
       name: 'register_user',
-      component: () => import('./views/register/Register_user.vue')
+      component: () => import('./views/register/RegisterUser.vue')
+    },
+    {
+      path: '/qna_list',
+      name: 'qna_list',
+      component: () => import('./views/qna/QnaList')
+    },
+    {
+      path: '/qna_write',
+      name: 'qna_write',
+      component: () => import('./views/qna/QnaWrite.vue')
+    },
+    {
+      path: '/qna_admin',
+      name: 'qna_admin',
+      component: () => import('./views/qna/QnaAdmin.vue')
+    },
+    {
+      path: '/qna_user',
+      name: 'qna_user',
+      component: () => import('./views/qna/QnaUser.vue')
     }
   ]
 })

@@ -60,10 +60,12 @@
                           <v-text-field
                               v-model="url"
                               label="url"
+                              :rules="urlRules"
                               required
                           ></v-text-field>
                           <v-text-field
-                              v-model="short_description"
+                              v-model="shortDescription"
+                              :rules="shortDescriptionRules"
                               label="한줄요약"
                               required
                           ></v-text-field>
@@ -77,13 +79,13 @@
                           outlined
                           name="input-7-4"
                           label="설명"
-                          value="어플에 대한 설명을 적어주세요."
+                          placeholder="설명을 적어주세요."
                           ></v-textarea>
                           <v-textarea
                           outlined
                           name="input-7-4"
                           label="새로운 기능"
-                          value="새로운 기능을 적어주세요."
+                          placeholder="새로운 기능을 적어주세요."
                           ></v-textarea>
                           <h3>
                               정보
@@ -93,6 +95,7 @@
                               <v-col cols="12" md="10">
                                   <v-text-field
                                   v-model="company"
+                                  :rules="companyRules"
                                   label="개발사"
                                   required
                                   ></v-text-field>
@@ -103,6 +106,7 @@
                               <v-col cols="12" md="10">
                                   <v-select
                               :items="category"
+                              :rules="categoryRules"
                               label="카테고리"
                               ></v-select>
                               </v-col>
@@ -112,6 +116,7 @@
                               <v-col cols="12" md="10">
                                   <v-text-field
                                   v-model="language"
+                                  :rules="languageRules"
                                   label="언어"
                                   required
                                   ></v-text-field>
@@ -122,6 +127,7 @@
                               <v-col cols="12" md="10">
                                   <v-text-field
                                   v-model="age"
+                                  :rules="ageRules"
                                   label="연령"
                                   required
                                   ></v-text-field>
@@ -132,6 +138,7 @@
                               <v-col cols="12" md="10">
                                   <v-text-field
                                   v-model="copyright"
+                                  :rules="copyrightRules"
                                   label="저작권"
                                   required
                                   ></v-text-field>
@@ -141,7 +148,8 @@
                               <v-col cols="12" md="2"/>
                               <v-col cols="12" md="10">
                                   <v-text-field
-                                  v-model="private_info_policy"
+                                  v-model="privateInfoPolicy"
+                                  :rules="privateInfoPolicyRules"
                                   label="개인정보"
                                   required
                                   ></v-text-field>
@@ -202,7 +210,7 @@
         {
         text: '번호',
         align: 'left',
-        value: 'no',
+        value: 'id',
         },
         { text: '앱이름', value: 'app' },
         { text: '제목', value: 'title' },
@@ -218,19 +226,51 @@
       app: '',
       appRules: [
         v => !!v || 'App Name is required',
-        v => /.+@.+\..+/.test(v) || 'App Name must be valid',
+        // v => /.+@.+\..+/.test(v) || 'App Name must be valid',
       ],
       url:'',
-      short_description:'',
+      urlRules: [
+        v => !!v || 'Url is required',
+        // v => /.+@.+\..+/.test(v) || 'App Name must be valid',
+      ],
+      shortDescription:'',
+      shortDescriptionRules: [
+        v => !!v || 'ShortDescription is required',
+        // v => /.+@.+\..+/.test(v) || 'App Name must be valid',
+      ],
       company:'',
+      companyRules: [
+        v => !!v || 'Company is required',
+        // v => /.+@.+\..+/.test(v) || 'App Name must be valid',
+      ],
       language:'',
+      languageRules: [
+        v => !!v || 'Language is required',
+        // v => /.+@.+\..+/.test(v) || 'App Name must be valid',
+      ],
       age:'',
+      ageRules: [
+        v => !!v || 'Age is required',
+        // v => /.+@.+\..+/.test(v) || 'App Name must be valid',
+      ],
       copyright:'',
-      private_info_policy:'',
+      copyrightRules: [
+        v => !!v || 'Copyright is required',
+        // v => /.+@.+\..+/.test(v) || 'App Name must be valid',
+      ],
+      privateInfoPolicy:'',
+      privateInfoPolicyRules: [
+        v => !!v || 'PrivateInfoPolicy is required',
+        // v => /.+@.+\..+/.test(v) || 'App Name must be valid',
+      ],
       imageRules:[
           
       ],
       category: ['1', '2', '3', '4'],
+      categoryRules: [
+        v => !!v || 'Category is required',
+        // v => /.+@.+\..+/.test(v) || 'App Name must be valid',
+      ],
       select: null,
       checkbox: false,
       lazy: false
@@ -272,7 +312,7 @@
       getDesserts () {
         return [
           {
-            no: '1',
+            id: '1',
             app: 'app',
             title: '등록을 신청합니다.',
             register: '전예림',
@@ -280,7 +320,7 @@
             bool: 'Y',
           },
           {
-            no: '2',
+            id: '2',
             app: 'app',
             title: '등록을 신청합니다.',
             register: '전예림',
@@ -288,7 +328,7 @@
             bool: 'Y',
           },
           {
-            no: '3',
+            id: '3',
             app: 'app',
             title: '등록을 신청합니다.',
             register: '전예림',
@@ -296,7 +336,7 @@
             bool: 'Y',
           },
           {
-            no: '4',
+            id: '4',
             app: 'app',
             title: '등록을 신청합니다.',
             register: '전예림',
@@ -304,7 +344,7 @@
             bool: 'Y',
           },
           {
-            no: '5',
+            id: '5',
             app: 'app',
             title: '등록을 신청합니다.',
             register: '전예림',
@@ -312,7 +352,7 @@
             bool: 'Y',
           },
           {
-            no: '6',
+            id: '6',
             app: 'app',
             title: '등록을 신청합니다.',
             register: '전예림',
@@ -320,7 +360,7 @@
             bool: 'Y',
           },
           {
-            no: '7',
+            id: '7',
             app: 'app',
             title: '등록을 신청합니다.',
             register: '전예림',
@@ -328,7 +368,7 @@
             bool: 'Y',
           },
           {
-            no: '8',
+            id: '8',
             app: 'app',
             title: '등록을 신청합니다.',
             register: '전예림',
