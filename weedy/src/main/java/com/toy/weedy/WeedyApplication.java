@@ -8,15 +8,9 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 
 @SpringBootApplication
 @ServletComponentScan //@WebFilter annotation read
-public class WeedyApplication extends SpringBootServletInitializer{
+public class WeedyApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(WeedyApplication.class, args);
-	}
-
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-		// TODO Auto-generated method stub
-		return super.configure(builder);
 	}
 }
