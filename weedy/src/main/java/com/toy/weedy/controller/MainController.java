@@ -22,7 +22,7 @@ public class MainController extends WebSecurityConfigurerAdapter{
 	@Autowired
 	MainRepository mainRepository;
 	
-	//'/'�� ���� url�� ���ؼ��� Security ����x.
+	//모든 url에 대해서 스프링 시큐리트를 거치지 않는다고 선언. 나중에 필요한 부분만 걸리도록 처리할 것.
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		logger.info("MainConroller configure method execute");

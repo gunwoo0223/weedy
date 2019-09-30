@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+//필터로 Cors 에러 처리
 @WebFilter(urlPatterns = "/*", description = "CORS")
 public class CorsFilter implements Filter{
 

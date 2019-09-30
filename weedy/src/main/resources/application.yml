@@ -1,7 +1,11 @@
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://54.180.145.129:3306/mydb
-    username: admin
-    password: admin
+    url: ENC(iIJHn4w1JJ4hVCtjuqSmlD5t5xxA1blapS0hvcf7Ffc2oqpwtYxuIj9vvKP7je/7)
+    username: ENC(Wnmqdx7w+SqY51fxQXSjuw==)
+    password: ENC(8pJELVIhdHZAYix58Khnfg==)
+    
+jasypt:
+  encryptor:
+    bean: jasyptStringEncryptor
     
