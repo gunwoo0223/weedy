@@ -27,13 +27,13 @@ export default new Router({
       component: () => import('./views/main/Main.vue')
     },
     {
-      path: '/register_admin',
-      name: 'register_admin',
+      path: '/registerAdmin',
+      name: 'registerAdmin',
       component: () => import('./views/register/RegisterAdmin.vue')
     },
     {
-      path: '/register_user',
-      name: 'register_user',
+      path: '/registerUser',
+      name: 'registerUser',
       component: () => import('./views/register/RegisterUser.vue')
     },
     {
@@ -47,24 +47,29 @@ export default new Router({
       component: () => import('./views/search/SearchDetail.vue')
     },
     {
-      path: '/qna_list',
-      name: 'qna_list',
+      path: '/qnaList',
+      name: 'qnaList',
       component: () => import('./views/qna/QnaList')
     },
     {
-      path: '/qna_write',
-      name: 'qna_write',
+      path: '/qnaWrite',
+      name: 'qnaWrite',
       component: () => import('./views/qna/QnaWrite.vue')
     },
     {
-      path: '/qna_admin',
-      name: 'qna_admin',
-      component: () => import('./views/qna/QnaAdmin.vue')
+      path: '/qnaDetailAdmin',
+      name: 'qnaAdmin',
+      component: () => import('./views/qna/QnaDetailAdmin.vue')
     },
     {
-      path: '/qna_user',
-      name: 'qna_user',
-      component: () => import('./views/qna/QnaUser.vue')
+      path: '/qnaDetailUser',
+      name: 'qnaUser',
+      component: () => import('./views/qna/QnaDetailUser.vue')
+    },
+    {
+      path: '/faq',
+      name: 'faq',
+      component: () => import('./views/qna/Faq.vue')
     }
   ]
 })

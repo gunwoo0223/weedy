@@ -74,7 +74,8 @@
                               <v-file-input small-chips accept="image/*" label="메인이미지"></v-file-input>
                               </v-col>
                           </v-row>
-                          <v-file-input small-chips accept="image/*" label="아이콘"></v-file-input>
+                          <v-file-input small-chips accept="image/*" label="큰 아이콘"></v-file-input>
+                          <v-file-input small-chips accept="image/*" label="작은 아이콘"></v-file-input>
                           <v-textarea
                           outlined
                           name="input-7-4"
