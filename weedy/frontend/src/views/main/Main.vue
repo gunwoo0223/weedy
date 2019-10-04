@@ -7,6 +7,8 @@
         >
             <v-autocomplete
                 :items="components"
+                @change="getSelectedAppName">
+
             >
             </v-autocomplete>
 
@@ -18,16 +20,13 @@
 
             <!-- 우측 하단 플로팅 버튼 생기는 곳 -->
             <v-speed-dial
-                v-model="fab"
                 bottom
                 right
                 transition="slide-y-reverse-transition"
             >
                 <template v-slot:activator>
                 <v-btn
-                    v-model="fab"
                     dark
-                    fab
                     color="pink"
                 >
                 <v-icon>reorder</v-icon>
@@ -71,7 +70,23 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
+    //페이지가 호출될때 바로 실행되는 함수. created -> mounted -> updated -> destroyed
+    created(){
+      axios.get('/main')
+            .then((response) => {
+              alert("OK : "+response.data);
+              //this.components = response.data;
+              for(var i = 0;i < response.data.length;i++){
+                this.components.push(response.data[i].name);
+              }
+            }).catch((ex)=> {
+              alert("ERROR!!!! : "+ex);
+              console.warn("ERROR!!!! : ", ex);
+            })
+    },
     data: () => ({
       items: [
         {
@@ -95,9 +110,17 @@ export default {
           router: '/qna',
         },        
       ],
-      components:['Autocompletes', 'Comboboxes', 'Forms', 'Inputs', 'Overflow Buttons', 'Selects', 'Selection Controls', 'Sliders', 'Textareas', 'Text Fields',],
+      //components:['Autocompletes', 'Comboboxes', 'Forms', 'Inputs', 'Overflow Buttons', 'Selects', 'Selection Controls', 'Sliders', 'Textareas', 'Text Fields',],
+      components: [],
       model: 1,
     }),
+    methods: {
+        getSelectedAppName : function(appName){
+            alert(appName);
+            //this.$router.push('/searchList');
+            this.$router.push({path: '/searchList', param: {name: appName}});
+        },
+    },
 }
 </script>
 

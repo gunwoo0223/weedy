@@ -9,13 +9,10 @@ module.exports = {
     devServer: {
         //frontend port번호 설정
         port:7070,
-        //frontend <-> backend 연결을 위한 proxy 설정
+        //frontend와 backend 연결을 위한 proxy 설정
         proxy: {
-            // '/': {
-            //     target: 'http://localhost:8080/'
-            // },
-            '/main': {
-                target: 'http://localhost:8080/main',
+            '/': {
+                target: 'http://localhost:8080',
                 changeOrigin: true,
             }
         }
