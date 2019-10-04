@@ -13,10 +13,12 @@ module.exports = {
         proxy: {
             '/': {
                 target: 'http://localhost:8080',
+                ws: true,
                 changeOrigin: true,
+                pathRewrite: {
+                    '^/': ''
+                },
             }
         }
     }
-
-    //proxy 설정하기
 }
