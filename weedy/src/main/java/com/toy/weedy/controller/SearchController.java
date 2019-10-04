@@ -28,4 +28,10 @@ public class SearchController {
 	public void searchList() {
 		logger.info("SearchController /searchList path execute");
 	}
+	
+	@RequestMapping("/searchList/{id}")
+	public void searchList(@PathVariable int id) {
+		logger.info("SearchController /searchList/{id} path execute");
+		logger.info("id: "+id);
+	}
 }

@@ -29,7 +29,9 @@ public class WeedyApplication extends WebSecurityConfigurerAdapter implements Co
 	protected void configure(HttpSecurity http) throws Exception {
 		logger.info("WeedyApplication configure method execute");
 		
-        http.authorizeRequests().antMatchers("/", "/main", "searchList/test").permitAll().anyRequest().authenticated().and().httpBasic();
+		//http.authorizeRequests().antMatchers("/", "/main", "/searchList", "/searchList/*").permitAll().anyRequest().authenticated().and().httpBasic();
+		//http.authorizeRequests().antMatchers("/*").permitAll().anyRequest().authenticated().and().httpBasic();
+		http.authorizeRequests().antMatchers("/*", "/*/*").permitAll().anyRequest().authenticated().and().httpBasic();
 		super.configure(http);
 	}
 		

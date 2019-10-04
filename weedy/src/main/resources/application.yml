@@ -3,7 +3,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: ENC(iIJHn4w1JJ4hVCtjuqSmlD5t5xxA1blapS0hvcf7Ffc2oqpwtYxuIj9vvKP7je/7)
     username: ENC(Wnmqdx7w+SqY51fxQXSjuw==)
-    password: ENC(8pJELVIhdHZAYix58Khnfg==)
+    password: ENC(hgHG4jwxQrVr7QSvQWe2PQ==)
     
 jasypt:
   encryptor:

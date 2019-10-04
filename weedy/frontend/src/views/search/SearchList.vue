@@ -9,7 +9,7 @@ import axios from 'axios'
 
 export default {
     created(){
-        axios.get('/searchList')
+        axios.get('/searchList/1')
                 .then((response) => {
                     alert("searchList Data Access success!!");
                 }).catch((ex) => {
