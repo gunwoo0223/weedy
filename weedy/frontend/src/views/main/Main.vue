@@ -80,8 +80,11 @@ export default {
               alert("OK : "+response.data);
               //this.components = response.data;
               for(var i = 0;i < response.data.length;i++){
+                //this.components.push({name:response.data[i].name});
                 this.components.push(response.data[i].name);
               }
+              console.log(this.components);
+              alert(this.components);
             }).catch((ex)=> {
               alert("ERROR!!!! : "+ex);
               console.warn("ERROR!!!! : ", ex);
@@ -118,7 +121,7 @@ export default {
         getSelectedAppName : function(appName){
             alert(appName);
             //this.$router.push('/searchList');
-            this.$router.push({path: '/searchList', param: {name: appName}});
+            this.$router.push({name: 'searchList', params: {'name': appName}});
         },
     },
 }

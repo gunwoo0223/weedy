@@ -1,6 +1,6 @@
 <template>
     <div>
-        aaa
+        {{this.$route.params.name}}
     </div>
 </template>
 
@@ -9,6 +9,7 @@ import axios from 'axios'
 
 export default {
     created(){
+        alert(this.$route.params.name);
         axios.get('/searchList/1')
                 .then((response) => {
                     alert("searchList Data Access success!!");

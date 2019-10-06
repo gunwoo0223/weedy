@@ -24,6 +24,7 @@ export default new Router({
     {
       path: '/main',
       name: 'main',
+      props: true,
       component: () => import('./views/main/Main.vue')
     },
     {
@@ -39,6 +40,7 @@ export default new Router({
     {
       path: '/searchList',
       name: 'searchList',
+      props: true,
       component: () => import('./views/search/SearchList.vue')
     },
     {
