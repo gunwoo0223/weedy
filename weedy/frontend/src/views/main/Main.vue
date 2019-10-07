@@ -7,9 +7,10 @@
         >
             <v-autocomplete
                 :items="components"
-                @change="getSelectedAppName">
+                @change="getSelectedAppId"
+                item-text="name"
+                item-value="id">
 
-            >
             </v-autocomplete>
 
             <!-- 바로가기 아이콘들이 들어가는 곳 -->
@@ -80,11 +81,9 @@ export default {
               alert("OK : "+response.data);
               //this.components = response.data;
               for(var i = 0;i < response.data.length;i++){
-                //this.components.push({name:response.data[i].name});
-                this.components.push(response.data[i].name);
+                this.components.push({id:response.data[i].id, name:response.data[i].name});
+                //this.components.push(response.data[i].name);
               }
-              console.log(this.components);
-              alert(this.components);
             }).catch((ex)=> {
               alert("ERROR!!!! : "+ex);
               console.warn("ERROR!!!! : ", ex);
@@ -118,10 +117,10 @@ export default {
       model: 1,
     }),
     methods: {
-        getSelectedAppName : function(appName){
-            alert(appName);
+        getSelectedAppId : function(appId){
+          alert(appId);
             //this.$router.push('/searchList');
-            this.$router.push({name: 'searchList', params: {'name': appName}});
+            this.$router.push({name: 'searchList', params: {'id': appId}});
         },
     },
 }
