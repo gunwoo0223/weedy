@@ -118,7 +118,6 @@ export default {
     }),
     methods: {
         getSelectedAppId : function(appId){
-          alert(appId);
             //this.$router.push('/searchList');
             this.$router.push({name: 'searchList', params: {'id': appId}});
         },
