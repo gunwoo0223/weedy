@@ -27,8 +27,8 @@ public class Apps {
 	@Column
 	private String url;
 	
-	@Column
-	private String short_description;
+	@Column(name="short_description")
+	private String shortDescription;
 	
 	@Column
 	private String description;
@@ -48,35 +48,35 @@ public class Apps {
 	@Column
 	private String copyright;
 	
-	@Column
-	private String private_info_policy;
+	@Column(name="private_info_policy")
+	private String privateInfoPolicy;
 	
-	@Column
-	private String comment_user;
+	@Column(name="comment_user")
+	private String commentUser;
 	
-	@Column
-	private String comment_admin;
+	@Column(name="comment_admin")
+	private String commentAdmin;
 	
-	@Column
-	private String request_state;
+	@Column(name="request_state")
+	private String requestState;
 	
-	@Column
-	private String admin_flag;
+	@Column(name="admin_flag")
+	private String adminFlag;
 	
-	@Column
-	private int read_count;
+	@Column(name="read_count")
+	private int readCount;
 	
-	@Column
-	private String enroll_time;
+	@Column(name="enroll_time")
+	private String enrollTime;
 	
-	@Column
-	private String update_time;
+	@Column(name="update_time")
+	private String updateTime;
 	
 	@Column
 	private String deleted;
 	
-	@Column
-	private Long users_id;
+	@Column(name="users_id")
+	private Long usersId;
 }
 
 
