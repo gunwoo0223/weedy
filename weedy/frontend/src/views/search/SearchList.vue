@@ -21,6 +21,7 @@
                                 tile
                             >
                             <!-- <v-img :src="card.src"></v-img> -->
+                            <v-img :src="require('@/images/small_icon/dog.jpg')"></v-img>
                             </v-avatar>
                             <v-card-text>
                                 <div class="display-1 text--primary">
