@@ -12,7 +12,8 @@
                     :key="card.id"
                     :cols="card.flex"
                 >
-                    <v-card>
+                    <v-card
+                        @click="showDetailApp(card.id)">
                         <div class="d-flex">
                             <v-avatar
                                 class="ma-3"
@@ -76,6 +77,11 @@ export default {
         //     { title: 'Best airlines',  subtitle:'test3', src: 'https://cdn.vuetifyjs.com/images/cards/plane.jpg', flex: 6 },
         // ]
     }),
+    methods: {
+        showDetailApp(appId){
+            this.$router.push({name: 'searchDetail', params: {'id': appId}});
+        }
+    }
 }
 </script>
 

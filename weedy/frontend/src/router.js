@@ -46,6 +46,7 @@ export default new Router({
     {
       path: '/searchDetail',
       name: 'searchDetail',
+      props: true,
       component: () => import('./views/search/SearchDetail.vue')
     },
     {
