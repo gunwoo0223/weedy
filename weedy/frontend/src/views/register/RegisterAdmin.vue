@@ -198,7 +198,26 @@
 
 <script>
   export default {
+    //페이지가 호출될때 바로 실행되는 함수. created -> mounted -> updated -> destroyed
+    // created(){
+    //   axios.get('/registerAdmin')
+    //         .then((response) => {
+    //           alert("OK : "+response.data);
+    //           //this.components = response.data;
+    //           // for(var i = 0;i < response.data.length;i++){
+    //           //   // this.components.push({id:response.data[i].id, name:response.data[i].name});
+    //           //   //this.components.push(response.data[i].name);
+    //           //   // console.log(response.data);
+    //           // }
+    //         }).catch((ex)=> {
+    //           alert("ERROR!!!! : "+ex);
+    //           console.warn("ERROR!!!! : ", ex);
+    //         })
+    // },
     data: () => ({
+      jsonData: [ 
+        { key: 'user', value: 'app' },
+        { key: 'message', value: 'title' }],
       currentItem: 'tab-등록',
       items: [
         '등록', '현황'
@@ -385,20 +404,34 @@
       },
       register(){
         // insert
-        app.post('/register_admin', function (req, res) {
-          var apps = {
-            'userid': req.body.userid,
-            'name': req.body.name,
-            'address': req.body.address
-          };
-          var query = connection.query('insert into apps set ?', apps, function (err, result) {
-            if (err) {
-              console.error(err);
-              throw err;
-            }
-            res.status(200).send('success');
-          });
-        });
+        // app.post('/register_admin', function (req, res) {
+        //   var apps = {
+        //     'userid': req.body.userid,
+        //     'name': req.body.name,
+        //     'address': req.body.address
+        //   };
+        //   var query = connection.query('insert into apps set ?', apps, function (err, result) {
+        //     if (err) {
+        //       console.error(err);
+        //       throw err;
+        //     }
+        //     res.status(200).send('success');
+        //   });
+        // });
+        // axios.post('/registerAdmin', {user: 'elena90'} )
+        axios.put('/registerAdmin', {user: 'elena90'} )
+            .then((response) => {
+              alert("OK : "+response.data);
+              //this.components = response.data;
+              // for(var i = 0;i < response.data.length;i++){
+              //   // this.components.push({id:response.data[i].id, name:response.data[i].name});
+              //   //this.components.push(response.data[i].name);
+              //   // console.log(response.data);
+              // }
+            }).catch((ex)=> {
+              alert("ERROR!!!! : "+ex);
+              console.warn("ERROR!!!! : ", ex);
+            })
       },
       cancel(){
 

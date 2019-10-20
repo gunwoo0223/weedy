@@ -83,6 +83,7 @@ export default {
               for(var i = 0;i < response.data.length;i++){
                 this.components.push({id:response.data[i].id, name:response.data[i].name});
                 //this.components.push(response.data[i].name);
+                console.log(response.data);
               }
             }).catch((ex)=> {
               alert("ERROR!!!! : "+ex);
