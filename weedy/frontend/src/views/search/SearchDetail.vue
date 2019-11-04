@@ -25,13 +25,13 @@
                   </v-avatar>
                   <v-card-text>
                       <div class="display-1 text--primary">
-                          어플명
+                        {{name}}
                       </div>
                       <div class="text--primary">
-                          url
+                          {{url}}
                       </div>
                       <div class="text--primary">
-                          한줄요약
+                          한줄요약 {{shortDescription}}
                       </div>
                       <div class="text--primary">
                           별점
@@ -41,7 +41,7 @@
               <div>
                 <v-card-text>
                     <div class="text--primary">어플설명</div><br>
-                    <div class="text--primary">어플설명contents</div>
+                    <div class="text--primary">어플설명contents {{description}}</div>
                 </v-card-text>
               </div>
               <div>
@@ -53,12 +53,12 @@
               <div>
                 <v-card-text>
                     <div class="text--primary">정보</div><br>
-                    <div class="text--primary">개발사 개발사명</div>
-                    <div class="text--primary">카테고리 카테고리</div>
-                    <div class="text--primary">언어 언어</div>
-                    <div class="text--primary">연령 연령</div>
-                    <div class="text--primary">저작권 저작권</div>
-                    <div class="text--primary">개인정보 취급방침 개인정보 취급방침</div>
+                    <div class="text--primary">개발사 개발사명 {{company}}</div>
+                    <div class="text--primary">카테고리 카테고리 {{category}}</div>
+                    <div class="text--primary">언어 언어 {{language}}</div>
+                    <div class="text--primary">연령 연령 {{age}}</div>
+                    <div class="text--primary">저작권 저작권 {{copyright}}</div>
+                    <div class="text--primary">개인정보 취급방침 개인정보 취급방침 {{privateInfoPolicy}}</div>
                 </v-card-text>
               </div>
               <div>
@@ -90,10 +90,43 @@
 </template>
 
 <script>
+import Axios from 'axios'
 export default {
     data: () => ({
       show: false,
+      name: '', 
+      url: '', 
+      shortDescription: '', 
+      description: '', 
+      company: '', 
+      category: '', 
+      language: '', 
+      age: '', 
+      copyright: '', 
+      privateInfoPolicy: '',
   }),
+  created(){
+    Axios.get('/searchDetail/'+this.$route.params.id)
+        .then((response)=>{
+          console.log(response);
+          this.name = response.data.name;
+          this.url = response.data.url;
+          this.shortDescription = response.data.shortDescription; 
+          this.description = response.data.description; 
+          this.company = response.data.company; 
+          this.category = response.data.category; 
+          this.language = response.data.language; 
+          this.age = response.data.age; 
+          this.copyright = response.data.copyright; 
+          this.privateInfoPolicy = response.data.privateInfoPolicy; 
+          alert("searchDetail server Access SUCCESS!!");
+        })
+        .catch((ex)=>{
+          console.log(ex);
+          alert("searchDetail server Access ERROR!!");
+        })
+  },
+
 }
 </script>
 

@@ -36,4 +36,11 @@ public class SearchController {
 		logger.info("id: "+id);
 		return searchRepository.getOne(id);
 	}
+	
+	@RequestMapping("/searchDetail/{id}")
+	public Apps searchDetail(@PathVariable int id) {
+		logger.info("SearchController / searchDetail/{id} path execute");
+		return searchRepository.getOne(id);
+	}
+	
 }
