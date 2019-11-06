@@ -28,10 +28,10 @@
                         {{name}}
                       </div>
                       <div class="text--primary">
-                          {{url}}
+                          <a v-bind:href="url" target="_blank">{{url}}</a>
                       </div>
                       <div class="text--primary">
-                          한줄요약 {{shortDescription}}
+                          {{shortDescription}}
                       </div>
                       <div class="text--primary">
                           별점
@@ -39,47 +39,75 @@
                   </v-card-text>
               </div>
               <div>
+                <v-divider></v-divider>
                 <v-card-text>
-                    <div class="text--primary">어플설명</div><br>
-                    <div class="text--primary">어플설명contents {{description}}</div>
+                  <v-card-actions>
+                    <div class="text--primary"><b>어플설명</b></div><br>
+                    <v-spacer></v-spacer>
+                    <v-btn
+                      icon
+                      @click="descriptionShow = !descriptionShow"
+                    >
+                      <v-icon>{{ descriptionShow ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+                    </v-btn>
+                  </v-card-actions>
+                  <v-expand-transition>
+                    <div v-show="descriptionShow">
+                      <v-card-text>
+                        <div class="text--primary">{{description}}</div>
+                      </v-card-text>
+                    </div>
+                  </v-expand-transition>
                 </v-card-text>
               </div>
               <div>
+                <v-divider></v-divider>
                 <v-card-text>
-                    <div class="text--primary">새로운 기능</div><br>
-                    <div class="text--primary">새로운 기능 contents</div>
+                  <v-card-actions>
+                    <div class="text--primary"><b>새로운 기능</b></div>
+                    <v-spacer></v-spacer>
+                    <v-btn
+                      icon
+                      @click="versionHistory = !versionHistory"
+                    >
+                      <v-icon>{{ versionHistory ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+                    </v-btn>
+                  </v-card-actions>
+                  <v-expand-transition>
+                    <div v-show="versionHistory">
+                      <v-card-text>
+                        새로운 기능 contents
+                      </v-card-text>
+                    </div>
+                  </v-expand-transition>
                 </v-card-text>
               </div>
               <div>
+                <v-divider></v-divider>
                 <v-card-text>
-                    <div class="text--primary">정보</div><br>
-                    <div class="text--primary">개발사 개발사명 {{company}}</div>
-                    <div class="text--primary">카테고리 카테고리 {{category}}</div>
-                    <div class="text--primary">언어 언어 {{language}}</div>
-                    <div class="text--primary">연령 연령 {{age}}</div>
-                    <div class="text--primary">저작권 저작권 {{copyright}}</div>
-                    <div class="text--primary">개인정보 취급방침 개인정보 취급방침 {{privateInfoPolicy}}</div>
-                </v-card-text>
-              </div>
-              <div>
-                <v-card-actions>
-                  <div class="text--primary">Share</div>
-                  <v-spacer></v-spacer>
-                  <v-btn
-                    icon
-                    @click="show = !show"
-                  >
-                    <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-                  </v-btn>
-                </v-card-actions>
+                  <v-card-actions>
+                    <div class="text--primary"><b>정보</b></div><br>
+                    <v-spacer></v-spacer>
+                    <v-btn
+                      icon
+                      @click="appInfo = !appInfo"
+                    >
+                      <v-icon>{{ appInfo ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+                    </v-btn>
+                  </v-card-actions>
                 <v-expand-transition>
-                  <div v-show="show">
-                    <v-divider></v-divider>
-                    <v-card-text>
-                      I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.
-                    </v-card-text>
-                  </div>
+                    <div v-show="appInfo">
+                      <v-card-text>
+                        <div class="text--primary"><b>개발사</b> {{company}}</div>
+                        <div class="text--primary"><b>카테고리</b> {{category}}</div>
+                        <div class="text--primary"><b>언어</b> {{language}}</div>
+                        <div class="text--primary"><b>연령</b> {{age}}+</div>
+                        <div class="text--primary"><b>저작권</b> {{copyright}}</div>
+                        <div class="text--primary"><b>개인정보 취급방침</b> <a v-bind:href="privateInfoPolicy" target="_blank">서비스 약관 보러가기</a></div>
+                      </v-card-text>
+                    </div>
                 </v-expand-transition>
+                </v-card-text>
               </div>
             </v-card>
           </v-col>
@@ -93,7 +121,9 @@
 import Axios from 'axios'
 export default {
     data: () => ({
-      show: false,
+      descriptionShow: true,
+      versionHistory: true,
+      appInfo: true,
       name: '', 
       url: '', 
       shortDescription: '', 
@@ -108,7 +138,6 @@ export default {
   created(){
     Axios.get('/searchDetail/'+this.$route.params.id)
         .then((response)=>{
-          console.log(response);
           this.name = response.data.name;
           this.url = response.data.url;
           this.shortDescription = response.data.shortDescription; 
