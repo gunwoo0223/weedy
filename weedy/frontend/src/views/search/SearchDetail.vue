@@ -13,7 +13,7 @@
             cols="6"
           >
             <v-card
-              height="100vh">
+              height="100%">
               <div class="d-flex">
                   <v-avatar
                       class="ma-3"
