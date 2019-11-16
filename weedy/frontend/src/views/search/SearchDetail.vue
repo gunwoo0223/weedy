@@ -1,5 +1,5 @@
 <template>
-  <v-app id="inspire">
+  <v-app id="searchDetail">
     <v-content>
       <v-container
         class="fill-height"
@@ -138,7 +138,8 @@
 </template>
 
 <script>
-import Axios from 'axios'
+import Axios from 'axios';
+
 export default {
     data: () => ({
       descriptionShow: true,
@@ -175,7 +176,6 @@ export default {
           alert("searchDetail server Access ERROR!!");
         })
   },
-
 }
 </script>
 

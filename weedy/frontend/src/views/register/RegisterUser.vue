@@ -46,14 +46,8 @@
                       :lazy-validation="lazy"
                       >
                           <v-text-field
-                              v-model="title"
-                              :rules="titleRules"
-                              label="제목"
-                              required
-                          ></v-text-field>
-                          <v-text-field
-                              v-model="app"
-                              :rules="appRules"
+                              v-model="name"
+                              :rules="nameRules"
                               label="앱이름"
                               required
                           ></v-text-field>
@@ -197,6 +191,7 @@
 
 
 <script>
+import Axios from 'axios'
   export default {
     data: () => ({
       currentItem: 'tab-등록',
@@ -213,19 +208,14 @@
         align: 'left',
         value: 'id',
         },
-        { text: '앱이름', value: 'app' },
-        { text: '제목', value: 'title' },
+        { text: '앱이름', value: 'name' },
         { text: '등록자', value: 'register' },
         { text: '날짜', value: 'date' },
         { text: '처리여부', value: 'bool' },
       ],
       valid: true,
-      title: '',
-      titleRules: [
-        v => !!v || 'Title is required',
-      ],
-      app: '',
-      appRules: [
+      name: '',
+      nameRules: [
         v => !!v || 'App Name is required',
         // v => /.+@.+\..+/.test(v) || 'App Name must be valid',
       ],
@@ -314,64 +304,56 @@
         return [
           {
             id: '1',
-            app: 'app',
-            title: '등록을 신청합니다.',
+            name: 'name',
             register: '전예림',
             date: '2019.09.09',
             bool: 'Y',
           },
           {
             id: '2',
-            app: 'app',
-            title: '등록을 신청합니다.',
+            name: 'name',
             register: '전예림',
             date: '2019.09.09',
             bool: 'Y',
           },
           {
             id: '3',
-            app: 'app',
-            title: '등록을 신청합니다.',
+            name: 'name',
             register: '전예림',
             date: '2019.09.09',
             bool: 'Y',
           },
           {
             id: '4',
-            app: 'app',
-            title: '등록을 신청합니다.',
+            name: 'name',
             register: '전예림',
             date: '2019.09.09',
             bool: 'Y',
           },
           {
             id: '5',
-            app: 'app',
-            title: '등록을 신청합니다.',
+            name: 'name',
             register: '전예림',
             date: '2019.09.09',
             bool: 'Y',
           },
           {
             id: '6',
-            app: 'app',
-            title: '등록을 신청합니다.',
+            name: 'name',
             register: '전예림',
             date: '2019.09.09',
             bool: 'Y',
           },
           {
             id: '7',
-            app: 'app',
-            title: '등록을 신청합니다.',
+            name: 'name',
             register: '전예림',
             date: '2019.09.09',
             bool: 'Y',
           },
           {
             id: '8',
-            app: 'app',
-            title: '등록을 신청합니다.',
+            name: 'name',
             register: '전예림',
             date: '2019.09.09',
             bool: 'Y',
@@ -384,21 +366,29 @@
         }
       },
       register(){
+        alert(this.name+this.url);
+        
+        Axios.post('/postRegisterUser',{name:this.name, url:this.url})
+              .then(response => {
+                alert("Regisert Success");
+              }).catch((ex) => {
+                alert("Regisert Fail: "+ex);
+              })
         // insert
-        app.post('/register_admin', function (req, res) {
-          var apps = {
-            'userid': req.body.userid,
-            'name': req.body.name,
-            'address': req.body.address
-          };
-          var query = connection.query('insert into apps set ?', apps, function (err, result) {
-            if (err) {
-              console.error(err);
-              throw err;
-            }
-            res.status(200).send('success');
-          });
-        });
+        // app.post('/register_admin', function (req, res) {
+        //   var apps = {
+        //     'userid': req.body.userid,
+        //     'name': req.body.name,
+        //     'address': req.body.address
+        //   };
+        //   var query = connection.query('insert into apps set ?', apps, function (err, result) {
+        //     if (err) {
+        //       console.error(err);
+        //       throw err;
+        //     }
+        //     res.status(200).send('success');
+        //   });
+        // });
       },
       cancel(){
 

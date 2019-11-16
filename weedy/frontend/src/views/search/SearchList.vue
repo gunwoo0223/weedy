@@ -1,4 +1,5 @@
 <template>
+    <keep-alive>
     <div class="searchList">
         <v-app id="searchList">
             <v-card
@@ -53,13 +54,16 @@
             </v-card>
         </v-app>
     </div>
+    </keep-alive>
 </template>
 
 <script>
-import axios from 'axios'
+import axios from 'axios';
+import Vue from 'vue';
 
 export default {
     created(){
+        alert(myGlobalVar);
         axios.get('/searchList/'+this.$route.params.id)
                 .then((response) => {
                     alert("searchList Data Access success!!");
