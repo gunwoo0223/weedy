@@ -19,17 +19,6 @@ public class RegisterController {
 	@Autowired
 	RegisterRepository registerRepository;
 	
-//	@RequestMapping("/")
-//	public void test() throws Exception {
-//		logger.info("RegisterController / path execute");
-//	}
-	
-//	@RequestMapping("/registerAdmin")
-//	public List<Boards> boardList() throws Exception {
-//		logger.info("RegisterController /main path execute");
-//		return registerRepository.findAll();
-//	}
-	
 	@RequestMapping(value="/postRegisterUser", method=RequestMethod.POST)
 	public void postRegisterUser(@RequestBody Apps app) throws Exception {
 		logger.info("postRegisterUser IN..");

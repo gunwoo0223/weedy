@@ -71,6 +71,8 @@
                           <v-file-input small-chips accept="image/*" label="큰 아이콘"></v-file-input>
                           <v-file-input small-chips accept="image/*" label="작은 아이콘"></v-file-input>
                           <v-textarea
+                            v-model="description"
+                            :rules="descriptionRules"
                           outlined
                           name="input-7-4"
                           label="설명"
@@ -100,10 +102,11 @@
                               <v-col cols="12" md="2"/>
                               <v-col cols="12" md="10">
                                   <v-select
-                              :items="category"
-                              :rules="categoryRules"
-                              label="카테고리"
-                              ></v-select>
+                                    :items="category"
+                                    :rules="categoryRules"
+                                    label="카테고리"
+                                    v-model="category"
+                                  ></v-select>
                               </v-col>
                           </v-row>
                           <v-row>
@@ -191,7 +194,8 @@
 
 
 <script>
-import Axios from 'axios'
+import Axios from 'axios';
+
   export default {
     data: () => ({
       currentItem: 'tab-등록',
@@ -227,6 +231,11 @@ import Axios from 'axios'
       shortDescription:'',
       shortDescriptionRules: [
         v => !!v || 'ShortDescription is required',
+        // v => /.+@.+\..+/.test(v) || 'App Name must be valid',
+      ],
+      description:'',
+      descriptionRules: [
+        v => !!v || 'description is required',
         // v => /.+@.+\..+/.test(v) || 'App Name must be valid',
       ],
       company:'',
@@ -366,13 +375,16 @@ import Axios from 'axios'
         }
       },
       register(){
-        alert(this.name+this.url);
-        
-        Axios.post('/postRegisterUser',{name:this.name, url:this.url})
+        console.log(this.category);
+        Axios.post('/postRegisterUser',{name:this.name, url:this.url, shortDescription:this.shortDescription, description:this.description
+                                      , company:this.company, category:this.category, language:this.language, age:this.age
+                                      , copyright:this.copyright, privateInfoPolicy:this.privateInfoPolicy
+                                      , usersId:3, adminFlag:'W', deleted:'N', requestState:'insert'})
               .then(response => {
                 alert("Regisert Success");
               }).catch((ex) => {
                 alert("Regisert Fail: "+ex);
+                console.log(ex.response);
               })
         // insert
         // app.post('/register_admin', function (req, res) {

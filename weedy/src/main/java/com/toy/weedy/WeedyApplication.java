@@ -31,7 +31,9 @@ public class WeedyApplication extends WebSecurityConfigurerAdapter implements Co
 		
 		//http.authorizeRequests().antMatchers("/", "/main", "/searchList", "/searchList/*").permitAll().anyRequest().authenticated().and().httpBasic();
 		//http.authorizeRequests().antMatchers("/*").permitAll().anyRequest().authenticated().and().httpBasic();
-		http.authorizeRequests().antMatchers("/*", "/*/*").permitAll().anyRequest().authenticated().and().httpBasic();
+		
+		//csrf는 post기능 쓸때 에러나서 임시로 disable로 막아둔 건데, 추후 다른 보안막는 방법으로 처리해야함.
+		http.authorizeRequests().antMatchers("/*", "/*/*").permitAll().anyRequest().authenticated().and().httpBasic().and().csrf().disable();
 		super.configure(http);
 	}
 		

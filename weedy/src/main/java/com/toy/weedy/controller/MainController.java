@@ -31,13 +31,4 @@ public class MainController {
 		logger.info("MainConroller /main path execute");
 		return mainRepository.findAll();
 	}
-	
-	@RequestMapping("/registerAdmin")
-	public List<Apps> appInsert(String user) throws Exception {
-		logger.info(user);
-		return mainRepository.findAll();
-//		return mainRepository.saveAll(user);
-//		return mainRepository.setFlushMode();
-	}
-
 }
