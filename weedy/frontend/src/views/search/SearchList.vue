@@ -63,7 +63,6 @@ import Vue from 'vue';
 
 export default {
     created(){
-        alert(myGlobalVar);
         axios.get('/searchList/'+this.$route.params.id)
                 .then((response) => {
                     alert("searchList Data Access success!!");

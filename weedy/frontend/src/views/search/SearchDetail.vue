@@ -36,8 +36,24 @@
                       <div>
                           별점
                       </div>
+                      <div>
+                        조회수
+                      </div>
                   </v-card-text>
+                  <v-card-actions>
+                    <v-btn>
+                      이동
+                    </v-btn>
+                  </v-card-actions>
               </div>
+              <v-card-actions>
+                <v-btn icon>
+                  <v-icon>mdi-heart</v-icon>
+                </v-btn>
+                <v-btn icon>
+                  <v-icon>home</v-icon>
+                </v-btn>
+              </v-card-actions>
               <div>
                 <v-divider></v-divider>
                 <v-card-text>
